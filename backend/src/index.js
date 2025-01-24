@@ -29,7 +29,23 @@ app.use(
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
-app. get('/healthcheck', (req, res) => res. send('Hello World! '))
+
+server.get("/health-check", (req, res) => {
+  const logMessage = `🔥 Health endpoint hit at ${new Date().toISOString()} - Status: ok 🚀`;
+  console.log(logMessage); // Log the custom message to the server logs
+  res.status(200).json({ status: "ok", timestamp: new Date().toISOString() });
+});
+
+const healthCheckUrl = `https://verbix.onrender.com/health-check`;
+
+setInterval(async () => {
+  try {
+    const response = await axios.get(healthCheckUrl);
+    console.log("Health check passed:", response.data);
+  } catch (error) {
+    console.error("Health check failed:", error.message);
+  }
+}, 45000); // 45 seconds
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
