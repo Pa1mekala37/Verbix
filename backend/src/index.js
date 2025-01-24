@@ -30,7 +30,7 @@ app.use(
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
-server.get("/health-check", (req, res) => {
+app.get("/health-check", (req, res) => {
   const logMessage = `🔥 Health endpoint hit at ${new Date().toISOString()} - Status: ok 🚀`;
   console.log(logMessage); // Log the custom message to the server logs
   res.status(200).json({ status: "ok", timestamp: new Date().toISOString() });
