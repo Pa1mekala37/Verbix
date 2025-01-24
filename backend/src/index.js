@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import morgan from 'morgan';
+const axios = require("axios");
 
 import path from "path";
 
