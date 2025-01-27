@@ -38,16 +38,16 @@ app.get("/health-check", (req, res) => {
   res.status(200).json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
-const healthCheckUrl = `https://verbix.onrender.com/health-check`;
+// const healthCheckUrl = `https://verbix.onrender.com/health-check`;
 
-setInterval(async () => {
-  try {
-    const response = await axios.get(healthCheckUrl);
-    console.log("Health check passed:", response.data);
-  } catch (error) {
-    console.error("Health check failed:", error.message);
-  }
-}, 45000); // 45 seconds
+// setInterval(async () => {
+//   try {
+//     const response = await axios.get(healthCheckUrl);
+//     console.log("Health check passed:", response.data);
+//   } catch (error) {
+//     console.error("Health check failed:", error.message);
+//   }
+// }, 45000); // 45 seconds
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
