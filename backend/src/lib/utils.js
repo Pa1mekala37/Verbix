@@ -10,6 +10,7 @@ export const generateToken = (userId, res) => {
     httpOnly: true, // prevent XSS attacks cross-site scripting attacks
     sameSite: "none", // Allow cross-origin requests for mobile apps
     secure: true, // Required for sameSite: "none"
+    domain: process.env.NODE_ENV === "production" ? ".onrender.com" : undefined,
   });
 
   return token;

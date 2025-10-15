@@ -24,8 +24,19 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:8100", "http://localhost:3000", "capacitor://localhost", "ionic://localhost"],
+    origin: [
+      "http://localhost:5173", 
+      "http://localhost:8100", 
+      "http://localhost:3000", 
+      "capacitor://localhost", 
+      "ionic://localhost",
+      "https://verbix.onrender.com",
+      "file://",
+      "content://"
+    ],
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization", "Cookie"],
   })
 );
 

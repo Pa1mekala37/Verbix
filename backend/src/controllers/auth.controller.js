@@ -79,8 +79,10 @@ export const logout = (req, res) => {
   try {
     res.cookie("jwt", "", { 
       maxAge: 0,
+      httpOnly: true,
       sameSite: "none",
-      secure: true
+      secure: true,
+      domain: process.env.NODE_ENV === "production" ? ".onrender.com" : undefined,
     });
     res.status(200).json({ message: "Logged out successfully" });
   } catch (error) {
