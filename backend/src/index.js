@@ -36,6 +36,8 @@ app.use(
       "http://localhost:3000", 
       "capacitor://localhost", 
       "ionic://localhost",
+      "https://localhost",
+      "http://localhost",
       "https://verbix.onrender.com",
       "file://",
       "content://"
