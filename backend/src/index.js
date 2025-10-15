@@ -22,6 +22,12 @@ const __dirname = path.resolve();
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(cookieParser());
+
+// Add debugging middleware
+app.use((req, res, next) => {
+  console.log(`🔍 ${req.method} ${req.path} - Origin: ${req.headers.origin || 'none'} - User-Agent: ${req.headers['user-agent']?.substring(0, 50) || 'none'}`);
+  next();
+});
 app.use(
   cors({
     origin: [
