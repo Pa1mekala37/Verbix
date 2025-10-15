@@ -25,7 +25,7 @@ app.use(cookieParser());
 
 // Add debugging middleware
 app.use((req, res, next) => {
-  console.log(`🔍 ${req.method} ${req.path} - Origin: ${req.headers.origin || 'none'} - User-Agent: ${req.headers['user-agent']?.substring(0, 50) || 'none'}`);
+  console.log(`🔍 ${req.method} ${req.path} - Origin: ${req.headers.origin || 'none'} - Cookies: ${req.headers.cookie || 'none'} - User-Agent: ${req.headers['user-agent']?.substring(0, 50) || 'none'}`);
   next();
 });
 app.use(

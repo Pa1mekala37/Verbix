@@ -82,7 +82,7 @@ export const logout = (req, res) => {
       httpOnly: true,
       sameSite: "none",
       secure: true,
-      domain: process.env.NODE_ENV === "production" ? ".onrender.com" : undefined,
+      // Don't set domain for localhost origins - let browser handle it
     });
     res.status(200).json({ message: "Logged out successfully" });
   } catch (error) {
